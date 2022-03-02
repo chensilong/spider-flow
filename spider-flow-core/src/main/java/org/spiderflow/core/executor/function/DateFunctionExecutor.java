@@ -1,6 +1,7 @@
 package org.spiderflow.core.executor.function;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -108,5 +109,14 @@ public class DateFunctionExecutor implements FunctionExecutor{
 	@Example("${date.addSeconds(date.now(),2)}")
 	public static Date addSeconds(Date date,int amount){
 		return DateUtils.addSeconds(date, amount);
+	}
+
+	@Comment("判断传入日期与当前日期大小 大于：ture 小于 false")
+	@Example("${date.isSize('2019-01-01 00:00:00')}")
+	public static Boolean isSize(String date) throws ParseException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date1 = format.parse(date);
+		Date dates = new Date();
+		return !date1.before(dates);
 	}
 }
