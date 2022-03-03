@@ -91,6 +91,12 @@ public class ListFunctionExecutor implements FunctionExecutor{
 		return new ArrayList<>(result);
 	}
 
+	@Comment("获取一个List<String>")
+	@Example("${list.getList}")
+	public static List<String> getList() {
+		return new ArrayList<>();
+	}
+
 	@Comment("获取数组中最大的数字")
 	@Example("${list.getMax(list)}")
 	public static String getMax(List<String> list) {
