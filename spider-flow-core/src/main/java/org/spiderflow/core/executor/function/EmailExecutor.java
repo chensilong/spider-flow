@@ -41,7 +41,7 @@ public class EmailExecutor implements FunctionExecutor {
         StringBuffer log=new StringBuffer();
         Collections.reverse(list);
         list.forEach(e-> {
-            log.append(e).append(System.getProperty("line.separator"));
+            log.append(e).append(System.getProperty("line.separator")).append(System.getProperty("line.separator"));
         });
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
