@@ -11,7 +11,10 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2019-12-06
@@ -36,8 +39,9 @@ public class EmailExecutor implements FunctionExecutor {
     @Example("${mail.send(list,mail)}")
     public void send(List<String> list, String mail) {
         StringBuffer log=new StringBuffer();
+        Collections.reverse(list);
         list.forEach(e-> {
-            log.append(e).append("<br><br>");
+            log.append(e).append(System.getProperty("line.separator"));
         });
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
